@@ -21,6 +21,9 @@ Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP
 - Thomas Seitz (Thomas.Seitz@openBackhaul.com)
 - [QosProfile_1.0.0-tsp.190514.1755+gendoc.1](./QosProfile_1.0.0-tsp.190514.1755+gendoc.1.docx)
 
+### Augmentation Condition
+- When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_QOS_PROFILE
+
 ### YANG File
 - to be provided 
 
