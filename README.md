@@ -41,7 +41,7 @@ Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP
 
 ### Open Issue List
 - Thomas Seitz (Thomas.Seitz@openBackhaul.com)
-- [vlanInterface/issues](../../issues)
+- [qosProfile/issues](../../issues)
 
 ### Comments
 ./.
