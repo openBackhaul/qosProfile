@@ -7,24 +7,25 @@ Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP
 
 ### UML
 - Thomas Seitz (Thomas.Seitz@openBackhaul.com)
-- [QosProfile_1.0.0-tsp.190712.1355](./QosProfile_1.0.0-tsp.190712.1355.zip)
+- [QosProfile_1.0.0-tsp.190712.1715](./QosProfile_1.0.0-tsp.190712.1715.zip)
 
 ### Overview 
 - Thomas Seitz (Thomas.Seitz@openBackhaul.com)
-- [QosProfile_1.0.0-tsp.190712.1355+overview.1](./QosProfile_1.0.0-tsp.190712.1355+overview.1.png)
+- [QosProfile_1.0.0-tsp.190712.1715+overview.1](./QosProfile_1.0.0-tsp.190712.1715+overview.1.png)
 
 ### List of Classes
 - to be provided 
 
 ### GenDoc Export
 - Thomas Seitz (Thomas.Seitz@openBackhaul.com)
-- [QosProfile_1.0.0-tsp.190712.1355+gendoc.1](./QosProfile_1.0.0-tsp.190712.1355+gendoc.1.docx)
+- [QosProfile_1.0.0-tsp.190712.1715+gendoc.1](./QosProfile_1.0.0-tsp.190712.1715+gendoc.1.docx)
 
 ### Augmentation Condition
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_QOS_PROFILE
 
 ### YANG File
-- to be provided 
+- Waseem Sattar (Waseem.Sattar@openBackhaul.com)
+- [QosProfile_1.0.0-tsp.190712.1715+yang.1](./QosProfile_1.0.0-tsp.190712.1715+yang.1.zip)
 
 ### Interface Simulator
 - not planned 
