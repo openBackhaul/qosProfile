@@ -25,7 +25,7 @@ Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP
 
 ### YANG File
 - Waseem Sattar (Waseem.Sattar@openBackhaul.com)
-- [QosProfile_1.0.0-tsp.190715.1300+yang.1](./QosProfile_1.0.0-tsp.190715.1300+yang.1.zip)
+- [QosProfile_1.0.0-tsp.190715.1300+yang.2](./QosProfile_1.0.0-tsp.190715.1300+yang.2.zip)
 
 ### Interface Simulator
 - not planned 
