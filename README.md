@@ -6,19 +6,19 @@
 - 1.0.0-tsp.d.t : Use case driven model for the Transport SDN Pilot at Telefonica Germany
 
 ### UML
-- [QosProfile_1.0.0-tsp.190715.1300](./QosProfile_1.0.0-tsp.190715.1300.zip)
+- [QosProfile_1.0.0-tsp.200124.1845](./QosProfile_1.0.0-tsp.200124.1845.zip)
 
 ### Overview 
-- [QosProfile_1.0.0-tsp.190715.1300+overview.1](./QosProfile_1.0.0-tsp.190715.1300+overview.1.png)
+- [QosProfile_1.0.0-tsp.200124.1845+overview.1](./QosProfile_1.0.0-tsp.200124.1845+overview.1.png)
 
 ### GenDoc Export
-- [QosProfile_1.0.0-tsp.190715.1300+gendoc.1](./QosProfile_1.0.0-tsp.190715.1300+gendoc.1.docx)
+- [QosProfile_1.0.0-tsp.200124.1845+gendoc.1](./QosProfile_1.0.0-tsp.200124.1845+gendoc.1.docx)
 
 ### Augmentation Condition
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_QOS_PROFILE
 
 ### YANG File
-- [QosProfile_1.0.0-tsp.190715.1300+yang.2](./QosProfile_1.0.0-tsp.190715.1300+yang.2.zip)
+- [QosProfile_1.0.0-tsp.200124.1845+yang.2](./QosProfile_1.0.0-tsp.200124.1845+yang.2.zip)
 
 ### JSON Schema
 - to be provided
