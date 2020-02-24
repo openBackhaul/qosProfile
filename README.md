@@ -18,7 +18,7 @@
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_QOS_PROFILE
 
 ### YANG File
-- [QosProfile_1.0.0-tsp.200124.1845+yang.2](./QosProfile_1.0.0-tsp.200124.1845+yang.2.zip)
+- [QosProfile_1.0.0-tsp.200124.1845+yang.3](./QosProfile_1.0.0-tsp.200124.1845+yang.3.zip)
 
 ### JSON Schema
 - to be provided
