@@ -22,6 +22,7 @@
 
 ### YANG File
 - [QosProfile_1.0.0-tsp.200124.1845+yang.3](./QosProfile_1.0.0-tsp.200124.1845+yang.3.zip) (deprecated)
+- [QosProfile_1.0.0-tsp.220405.1620+yang.1](./QosProfile_1.0.0-tsp.220405.1620+yang.1.zip)
 
 ### JSON Schema
 - to be provided
