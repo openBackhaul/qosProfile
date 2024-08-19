@@ -1,0 +1,468 @@
+{
+    "/profile-collection/profile={uuid}/qos-profile-1-0:qos-profile-pac/qos-profile-capability": {
+        "type": "object",
+        "required": [
+            "qos-profile-1-0:qos-profile-capability"
+        ],
+        "properties": {
+            "qos-profile-1-0:qos-profile-capability": {
+                "type": "object",
+                "required": [
+                    "profile-naming-is-avail",
+                    "drop-precedence-at-be-queue-is-avail",
+                    "drop-precedence-at-af-queues-is-avail",
+                    "drop-precedence-at-prio-queues-is-avail",
+                    "available-qos-profile-kind-list",
+                    "queue-depth-configuration-is-avail"
+                ],
+                "properties": {
+                    "profile-naming-is-avail": {
+                        "type": "boolean"
+                    },
+                    "available-queue-list": {
+                        "type": "array",
+                        "minItems": 0,
+                        "x-key": "queue-name",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "queue-name",
+                                "supported-queue-depth-list"
+                            ],
+                            "properties": {
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "supported-queue-depth-list": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "items": {
+                                        "type": "integer",
+                                        "format": "int32"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "drop-precedence-at-be-queue-is-avail": {
+                        "type": "boolean"
+                    },
+                    "drop-precedence-at-af-queues-is-avail": {
+                        "type": "boolean"
+                    },
+                    "drop-precedence-at-prio-queues-is-avail": {
+                        "type": "boolean"
+                    },
+                    "available-qos-profile-kind-list": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE",
+                                "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P",
+                                "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP",
+                                "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP",
+                                "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED"
+                            ]
+                        }
+                    },
+                    "queue-depth-configuration-is-avail": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    },
+    "/profile-collection/profile={uuid}/qos-profile-1-0:qos-profile-pac/qos-profile-configuration": {
+        "type": "object",
+        "required": [
+            "qos-profile-1-0:qos-profile-configuration"
+        ],
+        "properties": {
+            "qos-profile-1-0:qos-profile-configuration": {
+                "type": "object",
+                "required": [
+                    "external-label",
+                    "qos-profile-kind",
+                    "ingress-8021p-to-per-hop-behavior-mapping-list",
+                    "ingress-exp-to-per-hop-behavior-mapping-list",
+                    "ingress-ip-dscp-to-per-hop-behavior-mapping-list",
+                    "writing-per-hop-behavior-into-8021p-is-on",
+                    "egress-per-hop-behavior-to-8021p-mapping-list",
+                    "writing-per-hop-behavior-into-mpls-exp-is-on",
+                    "egress-per-hop-behavior-to-mpls-exp-mapping-list",
+                    "writing-per-hop-behavior-into-ip-dscp-is-on",
+                    "egress-per-hop-behavior-to-ip-dscp-mapping-list"
+                ],
+                "properties": {
+                    "external-label": {
+                        "type": "string"
+                    },
+                    "queue-depth-list": {
+                        "type": "array",
+                        "minItems": 0,
+                        "x-key": "queue-name",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "queue-name",
+                                "queue-depth"
+                            ],
+                            "properties": {
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "queue-depth": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        }
+                    },
+                    "qos-profile-kind": {
+                        "type": "string",
+                        "enum": [
+                            "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE",
+                            "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P",
+                            "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP",
+                            "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP",
+                            "qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED"
+                        ]
+                    },
+                    "ingress-8021p-to-per-hop-behavior-mapping-list": {
+                        "type": "array",
+                        "minItems": 8,
+                        "maxItems": 8,
+                        "x-key": "p-8021-priority",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "p-8021-priority",
+                                "queue-name",
+                                "drop-precedence-inside-queue"
+                            ],
+                            "properties": {
+                                "p-8021-priority": {
+                                    "type": "integer",
+                                    "format": "uint8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "ingress-exp-to-per-hop-behavior-mapping-list": {
+                        "type": "array",
+                        "minItems": 8,
+                        "maxItems": 8,
+                        "x-key": "exp-priority",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "exp-priority",
+                                "queue-name",
+                                "drop-precedence-inside-queue"
+                            ],
+                            "properties": {
+                                "exp-priority": {
+                                    "type": "integer",
+                                    "format": "uint8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "ingress-ip-dscp-to-per-hop-behavior-mapping-list": {
+                        "type": "array",
+                        "minItems": 64,
+                        "maxItems": 64,
+                        "x-key": "dscp-priority",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "dscp-priority",
+                                "queue-name",
+                                "drop-precedence-inside-queue"
+                            ],
+                            "properties": {
+                                "dscp-priority": {
+                                    "type": "integer",
+                                    "format": "uint8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "writing-per-hop-behavior-into-8021p-is-on": {
+                        "type": "boolean"
+                    },
+                    "egress-per-hop-behavior-to-8021p-mapping-list": {
+                        "type": "array",
+                        "minItems": 24,
+                        "maxItems": 24,
+                        "x-key": "mapping-number",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "mapping-number",
+                                "queue-name",
+                                "drop-precedence-inside-queue",
+                                "value-of-priority-bits"
+                            ],
+                            "properties": {
+                                "mapping-number": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "value-of-priority-bits": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                }
+                            }
+                        }
+                    },
+                    "writing-per-hop-behavior-into-mpls-exp-is-on": {
+                        "type": "boolean"
+                    },
+                    "egress-per-hop-behavior-to-mpls-exp-mapping-list": {
+                        "type": "array",
+                        "minItems": 24,
+                        "maxItems": 24,
+                        "x-key": "mapping-number",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "mapping-number",
+                                "queue-name",
+                                "drop-precedence-inside-queue",
+                                "value-of-priority-bits"
+                            ],
+                            "properties": {
+                                "mapping-number": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "value-of-priority-bits": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                }
+                            }
+                        }
+                    },
+                    "writing-per-hop-behavior-into-ip-dscp-is-on": {
+                        "type": "boolean"
+                    },
+                    "egress-per-hop-behavior-to-ip-dscp-mapping-list": {
+                        "type": "array",
+                        "minItems": 24,
+                        "maxItems": 24,
+                        "x-key": "mapping-number",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "mapping-number",
+                                "queue-name",
+                                "drop-precedence-inside-queue",
+                                "value-of-priority-bits"
+                            ],
+                            "properties": {
+                                "mapping-number": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                },
+                                "queue-name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7",
+                                        "qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "drop-precedence-inside-queue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH",
+                                        "qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED"
+                                    ]
+                                },
+                                "value-of-priority-bits": {
+                                    "type": "integer",
+                                    "format": "int8"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/qos-profile-1-0:create-qos-profile": {
+        "type": "object",
+        "required": [
+            "qos-profile-1-0:output"
+        ],
+        "properties": {
+            "qos-profile-1-0:output": {
+                "type": "object",
+                "required": [
+                    "created-qos-profile"
+                ],
+                "properties": {
+                    "created-qos-profile": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "/qos-profile-1-0:modify-qos-profile": null,
+    "/qos-profile-1-0:delete-qos-profile": null
+}

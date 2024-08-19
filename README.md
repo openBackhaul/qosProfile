@@ -1,5 +1,5 @@
 # qosProfile
-- Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP
+- Quality of Service Definitions based on 802.1p, MPLS Exp and IP DSCP that can be referenced by multiple interface instances
 
 ### Branch
 - 1.0.0-tsi.d.t : Use case driven model for the Transport SDN Introduction at Telefonica Germany
@@ -17,25 +17,25 @@
 - When statement in Augmentation statement demands for Profile::profileName==PROFILE_NAME_TYPE_QOS_PROFILE
 
 ### YANG File
-- [QosProfile_1.0.0-tsi.240104.1820+yang.1](./QosProfile_1.0.0-tsi.240104.1820+yang.1.zip)
+- [QosProfile_1.0.0-tsi.240104.1820+yang.1](./QosProfile_1.0.0-tsi.240104.1820+yang/qos-profile-1-0.yang)
 
-### JSON Schema
-- to be provided
+### JSON and YAML Schemas  
+- [QosProfile_1.0.0-tsi.240104.1820+schema](./QosProfile_1.0.0-tsi.240104.1820+schema/)
 
 ### Interface Simulator
-- to be provided
+- [QosProfile_1.0.0-tsi.240104.1820+simulator](./QosProfile_1.0.0-tsi.240104.1820+simulator/)
 
 ### Interface Validator
-- to be provided
+- [QosProfile_1.0.0-tsi.240104.1820+validator](./QosProfile_1.0.0-tsi.240104.1820+validator/)
 
-### Publication
-- Candidate for ONF TR-532 v2.0 
+### Publication  
+- Published as a part of ONF TR-532 v2.0  
 
-### Aspired Model Classification
-- Live Network
+### Aspired Model Classification  
+- Operational in Live Network  
 
-### Open Issue List
+### Open Issue List  
 - [qosProfile/issues](../../issues)
 
-### Comments
-./.
+### Comments  
+./.  
