@@ -1,0 +1,1589 @@
+openapi: 3.0.1
+info:
+  title: QosProfile_1.0.0-tsi.240104.1820+simulator.1
+  version: 1.0.0
+
+paths:
+
+########################################################################################################################
+#   Generic Paths
+########################################################################################################################
+  /core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/qos-profile-1-0:qos-profile-pac/qos-profile-capability:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedQosProfileCapability
+      summary: 'Provides QosProfileCapability from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'QosProfileCapability provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - qos-profile-1-0:qos-profile-capability
+                properties:
+                  qos-profile-1-0:qos-profile-capability:
+                    $ref: '#/components/schemas/qos-profile-capability'
+                example:
+                  qos-profile-1-0:qos-profile-capability:
+                    profile-naming-is-avail: true
+                    available-queue-list:
+                      - queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        supported-queue-depth-list:
+                          - 0
+                    drop-precedence-at-be-queue-is-avail: true
+                    drop-precedence-at-af-queues-is-avail: true
+                    drop-precedence-at-prio-queues-is-avail: true
+                    available-qos-profile-kind-list:
+                      - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE'
+                      - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P'
+                      - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP'
+                      - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP'
+                      - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED'
+                    queue-depth-configuration-is-avail: true
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=cache/control-construct={mountName}/profile-collection/profile={uuid}/qos-profile-1-0:qos-profile-pac/qos-profile-configuration:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+      - $ref: '#/components/parameters/uuid'
+      - $ref: '#/components/parameters/fields'
+    get:
+      operationId: getCachedQosProfileConfiguration
+      summary: 'Provides QosProfileConfiguration from cache'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      responses:
+        '200':
+          description: 'QosProfileConfiguration provided from cache'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - qos-profile-1-0:qos-profile-configuration
+                properties:
+                  qos-profile-1-0:qos-profile-configuration:
+                    $ref: '#/components/schemas/qos-profile-configuration'
+                example:
+                  qos-profile-1-0:qos-profile-configuration:
+                    external-label: 'string'
+                    queue-depth-list:
+                      - queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        queue-depth: 0
+                    qos-profile-kind: 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE'
+                    ingress-8021p-to-per-hop-behavior-mapping-list:
+                      - p-8021-priority: '1'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '0'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '2'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '3'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '4'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '5'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '6'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - p-8021-priority: '7'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                    ingress-exp-to-per-hop-behavior-mapping-list:
+                      - exp-priority: '0'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '1'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '2'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '3'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '4'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '5'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '6'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - exp-priority: '7'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                    ingress-ip-dscp-to-per-hop-behavior-mapping-list:
+                      - dscp-priority: '8'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '9'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '10'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '11'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '12'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '13'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '14'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '15'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '0'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '1'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '2'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '3'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '4'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '5'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '6'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '7'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '16'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '17'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '18'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '19'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '20'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '21'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '22'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '23'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '24'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '25'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '26'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '27'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '28'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '29'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '30'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '31'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '32'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '33'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '34'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '35'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '36'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '37'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '38'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '39'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '40'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '41'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '42'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '43'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '44'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '45'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '46'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '47'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '48'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '49'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '50'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '51'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '52'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '53'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '54'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '55'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '56'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '57'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '58'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '59'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '60'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '61'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '62'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                      - dscp-priority: '63'
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                    writing-per-hop-behavior-into-8021p-is-on: true
+                    egress-per-hop-behavior-to-8021p-mapping-list:
+                      - mapping-number: 0
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 1
+                      - mapping-number: 1
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 1
+                      - mapping-number: 2
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 1
+                      - mapping-number: 3
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 0
+                      - mapping-number: 4
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 0
+                      - mapping-number: 5
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 0
+                      - mapping-number: 6
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 2
+                      - mapping-number: 7
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 2
+                      - mapping-number: 8
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 2
+                      - mapping-number: 9
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 3
+                      - mapping-number: 10
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 3
+                      - mapping-number: 11
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 3
+                      - mapping-number: 12
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 4
+                      - mapping-number: 13
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 4
+                      - mapping-number: 14
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 4
+                      - mapping-number: 15
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 5
+                      - mapping-number: 16
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 5
+                      - mapping-number: 17
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 5
+                      - mapping-number: 18
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 6
+                      - mapping-number: 19
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 6
+                      - mapping-number: 20
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 6
+                      - mapping-number: 21
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 7
+                      - mapping-number: 22
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 7
+                      - mapping-number: 23
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 7
+                    writing-per-hop-behavior-into-mpls-exp-is-on: true
+                    egress-per-hop-behavior-to-mpls-exp-mapping-list:
+                      - mapping-number: 0
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 0
+                      - mapping-number: 1
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 0
+                      - mapping-number: 2
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 0
+                      - mapping-number: 3
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 1
+                      - mapping-number: 4
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 1
+                      - mapping-number: 5
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 1
+                      - mapping-number: 6
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 2
+                      - mapping-number: 7
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 2
+                      - mapping-number: 8
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 2
+                      - mapping-number: 9
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 3
+                      - mapping-number: 10
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 3
+                      - mapping-number: 11
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 3
+                      - mapping-number: 12
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 4
+                      - mapping-number: 13
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 4
+                      - mapping-number: 14
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 4
+                      - mapping-number: 15
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 5
+                      - mapping-number: 16
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 5
+                      - mapping-number: 17
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 5
+                      - mapping-number: 18
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 6
+                      - mapping-number: 19
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 6
+                      - mapping-number: 20
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 6
+                      - mapping-number: 21
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 7
+                      - mapping-number: 22
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 7
+                      - mapping-number: 23
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 7
+                    writing-per-hop-behavior-into-ip-dscp-is-on: true
+                    egress-per-hop-behavior-to-ip-dscp-mapping-list:
+                      - mapping-number: 0
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 8
+                      - mapping-number: 1
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 9
+                      - mapping-number: 2
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 10
+                      - mapping-number: 3
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 0
+                      - mapping-number: 4
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 1
+                      - mapping-number: 5
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 2
+                      - mapping-number: 6
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 16
+                      - mapping-number: 7
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 17
+                      - mapping-number: 8
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 18
+                      - mapping-number: 9
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 24
+                      - mapping-number: 10
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 25
+                      - mapping-number: 11
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 26
+                      - mapping-number: 12
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 32
+                      - mapping-number: 13
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 33
+                      - mapping-number: 14
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 34
+                      - mapping-number: 15
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 40
+                      - mapping-number: 16
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 41
+                      - mapping-number: 17
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 42
+                      - mapping-number: 18
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 48
+                      - mapping-number: 19
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 49
+                      - mapping-number: 20
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 50
+                      - mapping-number: 21
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                        value-of-priority-bits: 56
+                      - mapping-number: 22
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                        value-of-priority-bits: 57
+                      - mapping-number: 23
+                        queue-name: 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                        drop-precedence-inside-queue: 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                        value-of-priority-bits: 58
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/qos-profile-1-0:create-qos-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postCreateQosProfile
+      summary: 'Creates new instance of QosProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  properties:
+                    base-qos-profile:
+                      type: string
+      responses:
+        '200':
+          description: 'New instance of QosProfile created'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - qos-profile-1-0:output
+                properties:
+                  qos-profile-1-0:output:
+                    type: object
+                    required:
+                      - created-qos-profile
+                    properties:
+                      created-qos-profile:
+                        type: string
+                    example:
+                      created-qos-profile: 'string'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/qos-profile-1-0:modify-qos-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postModifyQosProfile
+      summary: 'Modifies an existing QosProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                    - qos-profile-to-be-modified
+                  properties:
+                    qos-profile-to-be-modified:
+                      type: string
+                    external-label:
+                      type: string
+                    queue-depth-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 8
+                      x-key: queue-name
+                      items:
+                        type: object
+                        required:
+                          - queue-name
+                          - queue-depth
+                        properties:
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          queue-depth:
+                            type: integer
+                            format: int32
+                    qos-profile-kind:
+                      type: string
+                      enum:
+                        - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE'
+                        - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P'
+                        - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP'
+                        - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP'
+                        - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED'
+                    ingress-8021p-to-per-hop-behavior-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 8
+                      x-key: p-8021-priority
+                      items:
+                        type: object
+                        required:
+                          - p-8021-priority
+                          - queue-name
+                          - drop-precedence-inside-queue
+                        properties:
+                          p-8021-priority:
+                            type: string
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                    ingress-exp-to-per-hop-behavior-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 8
+                      x-key: exp-priority
+                      items:
+                        type: object
+                        required:
+                          - exp-priority
+                          - queue-name
+                          - drop-precedence-inside-queue
+                        properties:
+                          exp-priority:
+                            type: string
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                    ingress-ip-dscp-to-per-hop-behavior-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 64
+                      x-key: dscp-priority
+                      items:
+                        type: object
+                        required:
+                          - dscp-priority
+                          - queue-name
+                          - drop-precedence-inside-queue
+                        properties:
+                          dscp-priority:
+                            type: string
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                    writing-per-hop-behavior-into-8021p-is-on:
+                      type: boolean
+                    egress-per-hop-behavior-to-8021p-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 24
+                      x-key: mapping-number
+                      items:
+                        type: object
+                        required:
+                          - mapping-number
+                          - queue-name
+                          - drop-precedence-inside-queue
+                          - value-of-priority-bits
+                        properties:
+                          mapping-number:
+                            type: integer
+                            format: int8
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                          value-of-priority-bits:
+                            type: integer
+                            format: int8
+                    writing-per-hop-behavior-into-mpls-exp-is-on:
+                      type: boolean
+                    egress-per-hop-behavior-to-mpls-exp-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 24
+                      x-key: mapping-number
+                      items:
+                        type: object
+                        required:
+                          - mapping-number
+                          - queue-name
+                          - drop-precedence-inside-queue
+                          - value-of-priority-bits
+                        properties:
+                          mapping-number:
+                            type: integer
+                            format: int8
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                          value-of-priority-bits:
+                            type: integer
+                            format: int8
+                    writing-per-hop-behavior-into-ip-dscp-is-on:
+                      type: boolean
+                    egress-per-hop-behavior-to-ip-dscp-mapping-list:
+                      type: array
+                      minItems: 0
+                      maxItems: 24
+                      x-key: mapping-number
+                      items:
+                        type: object
+                        required:
+                          - mapping-number
+                          - queue-name
+                          - drop-precedence-inside-queue
+                          - value-of-priority-bits
+                        properties:
+                          mapping-number:
+                            type: integer
+                            format: int8
+                          queue-name:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                              - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+                          drop-precedence-inside-queue:
+                            type: string
+                            enum:
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                              - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+                          value-of-priority-bits:
+                            type: integer
+                            format: int8
+      responses:
+        '204':
+          description: 'Instance of QosProfile updated'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+  /core-model-1-4:network-control-domain=live/control-construct={mountName}/qos-profile-1-0:delete-qos-profile:
+    parameters:
+      - $ref: '#/components/parameters/user'
+      - $ref: '#/components/parameters/originator'
+      - $ref: '#/components/parameters/x-correlator'
+      - $ref: '#/components/parameters/trace-indicator'
+      - $ref: '#/components/parameters/customer-journey'
+      - $ref: '#/components/parameters/mountName'
+    post:
+      operationId: postDeleteQosProfile
+      summary: 'Deletes an instance of QosProfile'
+      tags:
+        - IndividualServices
+      security:
+        - apiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - input
+              properties:
+                input:
+                  type: object
+                  required:
+                  - obsolete-qos-profile
+                  properties:
+                    obsolete-qos-profile:
+                      type: string
+      responses:
+        '204':
+          description: 'Instance of QosProfile deleted'
+          headers:
+            x-correlator:
+              $ref: '#/components/headers/x-correlator'
+            exec-time:
+              $ref: '#/components/headers/exec-time'
+            backend-time:
+              $ref: '#/components/headers/backend-time'
+            life-cycle-state:
+              $ref: '#/components/headers/life-cycle-state'
+        '4XX':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        default:
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+
+
+########################################################################################################################
+#   Common Components
+########################################################################################################################
+components:
+  parameters:
+    user:
+      name: user
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'User Name'
+      description: 'User identifier from the system starting the service call'
+    originator:
+      name: originator
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 3
+        example: 'Resolver'
+      description: >
+        'Identification for the system consuming the API, as defined in
+         [/core-model-1-4:control-construct/logical-termination-point={uuid}/layer-protocol=0/http-client-interface-1-0:http-client-interface-pac/http-client-interface-configuration/application-name]'
+    x-correlator:
+      name: x-correlator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+        description: 'Empty string accepted from external applications.'
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses'
+    trace-indicator:
+      name: trace-indicator
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: '^([0-9]+)(\.([0-9]+))*$'
+        description: 'Empty string accepted from external applications.'
+        example: '1.3.1'
+      description: 'Sequence of request numbers along the flow'
+    customer-journey:
+      name: customer-journey
+      in: header
+      required: true
+      schema:
+        type: string
+        example: 'Unknown value'
+      description: 'Holds information supporting customer’s journey to which the execution applies'
+    mountName:
+      name: mountName
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '222250001'
+      description: 'The mountName of the device that is addressed by the request'
+    uuid:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within the device'
+    uuid1:
+      name: uuid1
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LTP-MWPS-TTP-1-1'
+      description: 'Another instance identifier that is unique within the device'
+    localId:
+      name: localId
+      in: path
+      required: true
+      schema:
+        type: string
+        example: 'LP-MWPS-TTP-1-1'
+      description: 'Instance identifier that is unique within its list'
+    fields:
+      name: fields
+      in: query
+      required: false
+      schema:
+        type: string
+        example: 'node(node-id;netconf-node-topology:connection-status)'
+      description: 'Query parameter to filter ressources according to RFC8040 fields filter spec'
+  responses:
+    responseForErroredServiceRequests:
+      description: 'Response in case of errored service requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+      headers:
+        x-correlator:
+          schema:
+            type: string
+            pattern: '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$'
+            example: '550e8400-e29b-11d4-a716-446655440000'
+          description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+        exec-time:
+          schema:
+            type: integer
+            example: 1100
+          description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+        backend-time:
+          schema:
+            type: integer
+            example: 850
+          description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    responseForErroredOamRequests:
+      description: 'Response in case of errored OaM requests'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorDescription'
+  headers:
+    x-correlator:
+      schema:
+        type: string
+        example: '550e8400-e29b-11d4-a716-446655440000'
+      description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
+    exec-time:
+      schema:
+        type: integer
+        example: 1100
+      description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
+    backend-time:
+      schema:
+        type: integer
+        example: 850
+      description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
+    life-cycle-state:
+      schema:
+        type: string
+        enum:
+          - 'EXPERIMENTAL'
+          - 'OPERATIONAL'
+          - 'DEPRECATED'
+          - 'OBSOLETE'
+          - 'UNKNOWN'
+          - 'NOT_YET_DEFINED'
+        example: 'EXPERIMENTAL'
+  schemas:
+    errorDescription:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    qos-profile-capability:
+      type: object
+      required:
+        - profile-naming-is-avail
+        - drop-precedence-at-be-queue-is-avail
+        - drop-precedence-at-af-queues-is-avail
+        - drop-precedence-at-prio-queues-is-avail
+        - available-qos-profile-kind-list
+        - queue-depth-configuration-is-avail
+      properties:
+        profile-naming-is-avail:
+          type: boolean
+        available-queue-list:
+          type: array
+          minItems: 0
+          x-key: queue-name
+          items:
+            type: object
+            required:
+              - queue-name
+              - supported-queue-depth-list
+            properties:
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              supported-queue-depth-list:
+                type: array
+                minItems: 1
+                items:
+                  type: integer
+                  format: int32
+        drop-precedence-at-be-queue-is-avail:
+          type: boolean
+        drop-precedence-at-af-queues-is-avail:
+          type: boolean
+        drop-precedence-at-prio-queues-is-avail:
+          type: boolean
+        available-qos-profile-kind-list:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            enum:
+              - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE'
+              - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P'
+              - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP'
+              - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP'
+              - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED'
+        queue-depth-configuration-is-avail:
+          type: boolean
+    qos-profile-configuration:
+      type: object
+      required:
+        - external-label
+        - qos-profile-kind
+        - ingress-8021p-to-per-hop-behavior-mapping-list
+        - ingress-exp-to-per-hop-behavior-mapping-list
+        - ingress-ip-dscp-to-per-hop-behavior-mapping-list
+        - writing-per-hop-behavior-into-8021p-is-on
+        - egress-per-hop-behavior-to-8021p-mapping-list
+        - writing-per-hop-behavior-into-mpls-exp-is-on
+        - egress-per-hop-behavior-to-mpls-exp-mapping-list
+        - writing-per-hop-behavior-into-ip-dscp-is-on
+        - egress-per-hop-behavior-to-ip-dscp-mapping-list
+      properties:
+        external-label:
+          type: string
+        queue-depth-list:
+          type: array
+          minItems: 0
+          x-key: queue-name
+          items:
+            type: object
+            required:
+              - queue-name
+              - queue-depth
+            properties:
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              queue-depth:
+                type: integer
+                format: int32
+        qos-profile-kind:
+          type: string
+          enum:
+            - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NONE'
+            - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IEEE8021P'
+            - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_MPLS_EXP'
+            - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_IP_DSCP'
+            - 'qos-profile-1-0:QOS_PROFILE_KIND_TYPE_NOT_YET_DEFINED'
+        ingress-8021p-to-per-hop-behavior-mapping-list:
+          type: array
+          minItems: 8
+          maxItems: 8
+          x-key: p-8021-priority
+          items:
+            type: object
+            required:
+              - p-8021-priority
+              - queue-name
+              - drop-precedence-inside-queue
+            properties:
+              p-8021-priority:
+                type: string
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+        ingress-exp-to-per-hop-behavior-mapping-list:
+          type: array
+          minItems: 8
+          maxItems: 8
+          x-key: exp-priority
+          items:
+            type: object
+            required:
+              - exp-priority
+              - queue-name
+              - drop-precedence-inside-queue
+            properties:
+              exp-priority:
+                type: string
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+        ingress-ip-dscp-to-per-hop-behavior-mapping-list:
+          type: array
+          minItems: 64
+          maxItems: 64
+          x-key: dscp-priority
+          items:
+            type: object
+            required:
+              - dscp-priority
+              - queue-name
+              - drop-precedence-inside-queue
+            properties:
+              dscp-priority:
+                type: string
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+        writing-per-hop-behavior-into-8021p-is-on:
+          type: boolean
+        egress-per-hop-behavior-to-8021p-mapping-list:
+          type: array
+          minItems: 24
+          maxItems: 24
+          x-key: mapping-number
+          items:
+            type: object
+            required:
+              - mapping-number
+              - queue-name
+              - drop-precedence-inside-queue
+              - value-of-priority-bits
+            properties:
+              mapping-number:
+                type: integer
+                format: int8
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+              value-of-priority-bits:
+                type: integer
+                format: int8
+        writing-per-hop-behavior-into-mpls-exp-is-on:
+          type: boolean
+        egress-per-hop-behavior-to-mpls-exp-mapping-list:
+          type: array
+          minItems: 24
+          maxItems: 24
+          x-key: mapping-number
+          items:
+            type: object
+            required:
+              - mapping-number
+              - queue-name
+              - drop-precedence-inside-queue
+              - value-of-priority-bits
+            properties:
+              mapping-number:
+                type: integer
+                format: int8
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+              value-of-priority-bits:
+                type: integer
+                format: int8
+        writing-per-hop-behavior-into-ip-dscp-is-on:
+          type: boolean
+        egress-per-hop-behavior-to-ip-dscp-mapping-list:
+          type: array
+          minItems: 24
+          maxItems: 24
+          x-key: mapping-number
+          items:
+            type: object
+            required:
+              - mapping-number
+              - queue-name
+              - drop-precedence-inside-queue
+              - value-of-priority-bits
+            properties:
+              mapping-number:
+                type: integer
+                format: int8
+              queue-name:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_BEST_EFFORT_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE1'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE2'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE3'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_ASSURED_FORWARDING_QUEUE4'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE6'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                  - 'qos-profile-1-0:QUEUE_NAME_TYPE_NOT_YET_DEFINED'
+              drop-precedence-inside-queue:
+                type: string
+                enum:
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NONE'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_LOW'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_MEDIUM'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_HIGH'
+                  - 'qos-profile-1-0:DROP_PRECEDENCE_TYPE_NOT_YET_DEFINED'
+              value-of-priority-bits:
+                type: integer
+                format: int8
+
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: operation-key
+    basicAuth:
+      type: http
+      scheme: basic

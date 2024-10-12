@@ -19,23 +19,23 @@
 ### YANG File
 - [QosProfile_1.0.0-tsi.240104.1820+yang.1](./QosProfile_1.0.0-tsi.240104.1820+yang/qos-profile-1-0.yang)
 
-### JSON and YAML Schemas  
+### Schema
 - [QosProfile_1.0.0-tsi.240104.1820+schema](./QosProfile_1.0.0-tsi.240104.1820+schema/)
 
 ### Interface Simulator
-- [QosProfile_1.0.0-tsi.240104.1820+simulator](./QosProfile_1.0.0-tsi.240104.1820+simulator/)
+- [QosProfile_1.0.0-tsi.240104.1820+simulator](./QosProfile_1.0.0-tsi.240104.1820+simu/)
 
 ### Interface Validator
-- [QosProfile_1.0.0-tsi.240104.1820+validator](./QosProfile_1.0.0-tsi.240104.1820+validator/)
+- [QosProfile_1.0.0-tsi.240104.1820+validator](./QosProfile_1.0.0-tsi.240104.1820+vali/)
 
-### Publication  
+### Publication
 - Published as a part of ONF TR-532 v2.0  
 
-### Aspired Model Classification  
-- Operational in Live Network  
+### Model Classification
+- Operational in Live Network
 
-### Open Issue List  
+### Open Issue List
 - [qosProfile/issues](../../issues)
 
-### Comments  
-./.  
+### Comments
+./.

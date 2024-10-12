@@ -1,0 +1,95 @@
+@startuml QosProfile_1.0.0-tsi.240104.1820+diagram.completeness
+skinparam responseMessageBelowArrow true
+
+title
+QosProfile_1.0.0-tsi.240104.1820+diagram.completeness
+end title
+
+participant "Postman" as Postman
+participant "Collection" as Collection
+participant "../profile-collection" as ProfileCollection
+participant "../qos-profile-capability" as Capability
+participant "../qos-profile-configuration" as Configuration
+participant "../createQosProfile" as CreateRpc
+participant "../modifyQosProfile" as ModifyRpc
+participant "../deleteQosProfile" as DeleteRpc
+
+activate Postman
+
+group Preparation
+  Postman --\\o Collection : mountName
+
+  Postman -> ProfileCollection
+  Postman <-- ProfileCollection : {(uuid, profileName)}
+  note right Postman
+    filter for
+    QosProfile
+  end note
+  Postman --\\o Collection : qosProfileUuid
+end
+
+group Capability Validation
+  Collection --\\o Postman : qosProfileUuid
+  Postman -> Capability : {qosProfileUuid}
+  Postman <-- Capability : {existingCapabilites}
+  note right Postman
+    schema validation
+  end note
+  Postman --\\o Collection : existingCapabilites
+end
+
+group Configuration Validation
+  Collection --\\o Postman : qosProfileUuid
+  Postman -> Configuration : {qosProfileUuid}
+  Postman <-- Configuration : {existingConfiguration}
+  note right Postman
+    schema validation
+  end note
+  Postman --\\o Collection : existingConfiguration
+end
+
+group Create RPC
+  Collection --\\o Postman : qosProfileUuid
+  Postman -> CreateRpc : {baseQosProfile=qosProfileUuid}
+  Postman <-- CreateRpc : {createdQosProfileUuid}
+  note right Postman
+    schema validation
+  end note
+  Postman --\\o Collection : createdQosProfileUuid
+  Collection --\\o Postman : createdQosProfileUuid, existingConfiguration
+  Postman -> Configuration : {createdQosProfileUuid}
+  Postman <-- Configuration : {createdConfiguration}
+  note right Postman
+    createdConfiguration==existingConfiguration?
+  end note
+  Postman --\\o Collection : createdConfiguration
+end
+
+group Modify RPC
+  Collection --\\o Postman : createdQosProfileUuid, createdConfiguration
+  Postman -> ModifyRpc : {qosProfileToBeModified=createdQosProfileUuid, modifiedConfiguration}
+  Postman <-- ModifyRpc : 204
+  note right Postman
+    response==204?
+  end note
+  Postman --\\o Collection : modifiedConfiguration
+  Collection --\\o Postman : createdQosProfileUuid, modifiedConfiguration
+  Postman -> Configuration : {createdQosProfileUuid}
+  Postman <-- Configuration : {readConfiguration}
+  note right Postman
+    readConfiguration==modifiedConfiguration?
+  end note
+end
+
+group Delete RPC
+  Collection --\\o Postman : createdQosProfileUuid
+  Postman -> DeleteRpc : {obsoleteQosProfile=createdQosProfileUuid}
+  Postman <-- DeleteRpc : 204
+  note right Postman
+    response==204?
+  end note
+end
+
+deactivate Postman
+
+@enduml
