@@ -20,7 +20,7 @@
 			},
 			{
 				"serverName": "mwdi",
-				"server": "https://IP_ADRESS:PORT",
+				"server": "http://IP_ADRESS:PORT",
 				"pathToControlConstruct": "/core-model-1-4:network-control-domain=cache/control-construct={mountName}",
 				"authorizationCode": "YOUR_BASIC_AUTH_CODE",
 				"operationKey": "Operation key not yet provided.",
@@ -32,7 +32,7 @@
 			},
       {
 				"serverName": "mdip",
-				"server": "https://IP_ADRESS:PORT",
+				"server": "http://IP_ADRESS:PORT",
 				"pathToControlConstruct": "/core-model-1-4:network-control-domain=cache/control-construct={mountName}",
 				"authorizationCode": "YOUR_BASIC_AUTH_CODE",
 				"operationKey": "Operation key not yet provided.",

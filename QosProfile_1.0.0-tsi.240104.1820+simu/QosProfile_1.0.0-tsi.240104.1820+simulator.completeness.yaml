@@ -2380,7 +2380,7 @@ paths:
 # =============
 #
 # Preparation => MountName=305250001, UUID=qosPro1
-  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct//profile-collection:
+  /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection:
     parameters:
       - $ref: '#/components/parameters/mountName'
       - $ref: '#/components/parameters/fields'
@@ -2427,7 +2427,6 @@ paths:
                     profile:
                       - profile-name: 'qos-profile-1-0:PROFILE_NAME_TYPE_QOS_PROFILE'
                         uuid: 'qosPro1'
-
 
 # Completeness of GET 200
   /rests/data/network-topology:network-topology/topology=topology-netconf/node=305250001/yang-ext:mount/core-model-1-4:control-construct/profile-collection/profile=qosPro1/qos-profile-1-0:qos-profile-pac/qos-profile-capability:
